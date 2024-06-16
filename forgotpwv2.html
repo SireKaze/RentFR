@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentFR - Forgot Password</title>
+    <link rel="stylesheet" href="assets/css/output.css">
+    <style>
+        /* CSS for the popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 900;
+            display: none;
+            /* Hidden by default */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="h-screen w-full bg-zinc-700">
+        <div class="h-full w-[70%] bg-white pl-10 pt-10">
+            <div class="w-[70%]">
+                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <h2 class="text-center text-2xl font-bold text-blue-600 mb-6">Forgot Password</h2>
+                    <form id="resetForm" action="#" method="POST">
+                        <div class="mb-4">
+                            <label class="block text-blue-700 text-sm font-bold mb-2" for="email">
+                                Email
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="email" name="email" type="email" placeholder="Email" required>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                                href="loginv2.html">
+                                Back to Login
+                            </a>
+                            <button type="submit" id="resetButton"
+                                class="bg-blue-500 hover:bg-blue-700 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                Reset Password
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="absolute right-20 top-300">
+                <img src="assets/image/Home/FRrental.png">
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup and Overlay -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h2>Password Reset Email Sent!</h2>
+        <p>We've sent a password reset link to your email.</p>
+        <a href="loginv2.html">
+        <button onclick="closePopup()">Login</button></a>
+    </div>
+
+    <script>
+        // Function to display the popup
+        function showPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Submit form handler
+        document.getElementById('resetForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Simulate a successful request (replace with actual backend integration)
+            // Here we'll just show the popup immediately
+            showPopup();
+
+            setTimeout(function () {
+                window.location.href = 'loginv2.html';
+            }, 10000);
+        });
+    </script>
+</body>
+
+</html>
